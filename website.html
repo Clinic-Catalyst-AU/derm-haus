@@ -124,6 +124,17 @@ footer h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;
 footer a{color:rgba(255,251,245,.85);text-decoration:none}
 footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,251,245,.2);padding-top:22px;font-size:11px;letter-spacing:.04em;color:rgba(255,251,245,.55)}
 .demo-note{position:fixed;bottom:14px;right:14px;background:#0A2A28;color:#00D4BC;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;z-index:20;font-family:'DM Sans',sans-serif}
+header.hero video.bg{width:100%;height:100%;object-fit:cover;object-position:center 45%;background:none;opacity:.5}
+@media (prefers-reduced-motion:reduce){header.hero video.bg{display:none}}
+@media (max-width:900px){header.hero video.bg{opacity:.65;object-position:center top} header.hero .scrim{background:linear-gradient(180deg,rgba(0,0,0,.05) 0,rgba(0,0,0,.25) 30vh,rgba(0,0,0,.72) 42vh,rgba(0,0,0,.8) 100%)} header.hero .wrap{padding-top:42vh}}
+.person img{width:84px;height:84px}
+.people{grid-template-columns:1fr 1fr}
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+@media (max-width:900px){.reels{grid-template-columns:1fr 1fr}}
+.reel{background:var(--white);border:1px solid var(--cream-2);padding:14px}
+.reel video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;display:block}
+.reel h3{font-size:16px;margin:12px 0 4px}
+.reel p{font-size:13px;color:var(--mute)}
 </style>
 </head>
 <body>
@@ -136,7 +147,9 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,251,245,.2);padding-
 </nav>
 
 <header class="hero" id="top">
-  <div class="bg"></div><div class="scrim"></div>
+  <div class="bg"></div>
+  <video class="bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero-room-poster.jpg" aria-hidden="true"><source src="assets/hero-room.mp4" type="video/mp4"></video>
+  <div class="scrim"></div>
   <div class="wrap">
     <div>
       <div class="eyebrow">Skin health and aesthetic medicine &middot; Annerley and Bald Hills, Brisbane</div>
@@ -204,16 +217,20 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,251,245,.2);padding-
 
 <section id="team">
   <div class="wrap team">
-    <div><img class="portrait" src="assets/owners.jpg" alt="Meg, Lori and Bek, Derm Haus owners"></div>
+    <div><img class="portrait" src="assets/team/team-white.jpg" alt="The Derm Haus team" style="aspect-ratio:16/10;object-position:center 40%"><img class="portrait" src="assets/team/team-bts.jpg" alt="The Derm Haus team behind the scenes" style="margin-top:14px;aspect-ratio:4/3"></div>
     <div>
       <div class="eyebrow">Our team</div>
-      <h2>Family-run. Nurse and doctor led. About fifteen of us across two clinics.</h2>
+      <h2>Family-run. Nurse and doctor led. Fifteen of us across two clinics.</h2>
       <p class="lead">Derm Haus is owned by three women, two of them registered nurses who still treat every week, and led clinically by Dr Rina Savage. Our nurses and dermal therapists work collaboratively, so your plan can move between skin and medical aesthetics without you having to start again.</p>
       <div class="people">
         <div class="person"><img src="assets/dr-rina.jpg" alt="Dr Rina Savage"><div><h4>Dr Rina Savage</h4><p>Clinical Director, FACEM MBBS. Oversees the medical aesthetics pathway.</p></div></div>
-        <div class="person"><img src="assets/bek.jpg" alt="Bek McNeil"><div><h4>Bek McNeil</h4><p>Business Manager and Co-Owner. Runs the clinics so the team can run the rooms.</p></div></div>
-        <div class="person"><img src="assets/team.jpg" alt="Derm Haus nurses"><div><h4>Our registered nurses</h4><p>Each with a special interest in a different area of medical aesthetics. Their own page and booking link.</p></div></div>
-        <div class="person"><img src="assets/skin-analysis.jpg" alt="Derm Haus dermal therapists"><div><h4>Our dermal therapists</h4><p>A special interest in pigmentation, texture and skin health. Your skin consultation starts with them.</p></div></div>
+        <div class="person"><img src="assets/team/bek.jpg" alt="Bek McNeil"><div><h4>Bek McNeil</h4><p>Co-Owner and Business Manager. Runs the clinics so the team can run the rooms.</p></div></div>
+        <div class="person"><img src="assets/team/lori.jpg" alt="Lori"><div><h4>Lori</h4><p>Co-Owner and Registered Nurse. Still treats every week.</p></div></div>
+        <div class="person"><img src="assets/team/meg.jpg" alt="Meg McNeil"><div><h4>Meg McNeil</h4><p>Co-Owner, Registered Nurse and Clinic Manager, Bald Hills.</p></div></div>
+        <div class="person"><img src="assets/team/allie.jpg" alt="Allie"><div><h4>Allie</h4><p>Registered Nurse and Clinic Manager, Annerley. Four years with Derm Haus.</p></div></div>
+        <div class="person"><img src="assets/team/rachael.jpg" alt="Rachael"><div><h4>Rachael</h4><p>Registered Nurse. A special interest in skin rejuvenation.</p></div></div>
+        <div class="person"><img src="assets/team/tia.jpg" alt="Tia"><div><h4>Tia</h4><p>Registered Nurse.</p></div></div>
+        <div class="person"><img src="assets/skin-analysis.jpg" alt="Our dermal therapists"><div><h4>Our dermal therapists</h4><p>A special interest in pigmentation, texture and skin health. Your skin consultation starts with them.</p></div></div>
       </div>
       <div class="qa">
         <details><summary>Do I need to know what treatment I want?</summary><p>No. Tell us what you are noticing. The consultation works out the pathway, and we explain every option before anything is booked.</p></details>
@@ -229,7 +246,13 @@ footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,251,245,.2);padding-
   <div class="wrap">
     <div class="eyebrow">Learn</div>
     <h2>What we look at, explained plainly.</h2>
-    <p class="lead">Short videos from the team, one concern each, so you understand what is possible before you ever book.</p>
+    <p class="lead">Short videos from the team, so you understand what is possible before you ever book. These four are from our Instagram this year. The concern series below is next.</p>
+    <div class="reels">
+      <div class="reel"><video controls playsinline preload="metadata"><source src="assets/reel-06.mp4" type="video/mp4"></video><h3>A tour of the new space</h3><p>Meg walks you through reception and the rooms, and introduces Bek and Lori.</p></div>
+      <div class="reel"><video controls playsinline preload="metadata"><source src="assets/reel-04.mp4" type="video/mp4"></video><h3>Why our LED is different</h3><p>Two wavelengths, what they do in the skin, and why it is part of most plans.</p></div>
+      <div class="reel"><video controls playsinline preload="metadata" poster="assets/reel-01-poster.jpg"><source src="assets/reel-01.mp4" type="video/mp4"></video><h3>The ingredient everyone is asking about</h3><p>What it is, where it comes from, and where it sits in a skin plan.</p></div>
+      <div class="reel"><video controls playsinline preload="metadata"><source src="assets/reel-09.mp4" type="video/mp4"></video><h3>Spend a morning at Derm Haus</h3><p>Through the door and into the room. No talking, just the place.</p></div>
+    </div>
     <div class="edu">
       <div class="vid"><div class="ph">Video</div><h3>Why pigmentation comes back</h3><p>The types, what drives each one, and why the cause decides the pathway.</p></div>
       <div class="vid"><div class="ph">Video</div><h3>Texture and scarring, in stages</h3><p>Why one treatment rarely does it, and what a planned pathway looks like.</p></div>

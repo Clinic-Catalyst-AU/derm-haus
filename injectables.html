@@ -33,13 +33,30 @@ input:focus{outline:none;border-color:var(--terra)}
 footer{text-align:center;padding:22px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8A7A75}
 [hidden]{display:none!important}
 @media (max-width:640px){.grid{grid-template-columns:1fr}.gate{padding:32px 22px}}
+
+.case .ba{display:block}
+.case .ba img{width:100%;display:block;border:1px solid rgba(28,28,28,.08)}
+.pub{max-width:900px;margin:0 auto;padding:44px 20px 10px}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep,#8A7A6A);margin-bottom:12px}
+.gatehead{max-width:900px;margin:40px auto 0;padding:0 20px}
 </style>
 </head>
 <body>
-<header><div class="brand">Derm Haus</div><div class="tag">Private results gallery &middot; shared after consultation</div></header>
+<header><div class="brand">Derm Haus</div><div class="tag">Results &middot; skin, and medical aesthetics after consultation</div></header>
 
+<div class="pub" id="skin">
+  <div class="eyebrow">Skin results &middot; shared with consent</div>
+  <h2>Real Derm Haus clients, from our own feed.</h2>
+  <p>These journeys were shared on our Instagram with each client's consent. Skin treatment results can be shown openly. Results vary from person to person, and every plan starts with a consultation.</p>
+  <div class="grid">
+    <div class="case"><div class="k">Acne &middot; treatment journey</div><h3>Struggling with acne?</h3><div class="ba"><img src="assets/results/ba-acne-1.jpg" alt="Struggling with acne?, before and after"></div><p>A staged plan for active acne, treated over months with the right combination for her skin. Top is where she started, below is where she is now.</p></div>
+    <div class="case"><div class="k">Acne and scarring &middot; treatment journey</div><h3>What a consistent plan looks like</h3><div class="ba"><img src="assets/results/ba-acne-2.jpg" alt="What a consistent plan looks like, before and after"></div><p>Congestion and post-acne marks, treated in stages. The point is the consistency, session after session, with homecare in between.</p></div>
+    <div class="case"><div class="k">Pigmentation &middot; treatment journey</div><h3>Pigmentation from summer</h3><div class="ba"><img src="assets/results/ba-pigment.jpg" alt="Pigmentation from summer, before and after"></div><p>Sun-driven pigmentation across the face, before on the left and after on the right, with the plan chosen for the type of pigment.</p></div>
+  </div>
+</div>
+<div class="gatehead"><div class="eyebrow">Medical aesthetics &middot; shared after consultation</div><h2>The part we show you in the room.</h2><p>Results for prescription-only treatments are shared after a consultation, with a code from your nurse, in line with Australian advertising rules.</p></div>
 <div class="gate" id="gate">
-  <h1>Just for you.</h1>
+  <h1>Enter your code.</h1>
   <p>This gallery is shared with clients after a consultation, in line with Australian advertising rules for prescription-only cosmetic treatments. Enter the code from your consultation to view.</p>
   <input id="code" type="password" placeholder="Access code" onkeydown="if(event.key==='Enter')unlock()">
   <button class="btn" onclick="unlock()">View gallery</button>
