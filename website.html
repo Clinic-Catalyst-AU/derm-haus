@@ -6,114 +6,241 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Derm Haus - Skin health and aesthetic medicine, Annerley and Bald Hills, Brisbane</title>
 <link rel="icon" type="image/png" href="assets/logo-m.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--terra:#6B473D;--esp:#4C2824;--cream:#FFFBF5;--cream-2:#F2ECDE;--ink:#2B1B17;--white:#FFFFFF;--mute:#5E4C47;}
+:root{--terra:#6B473D;--esp:#4C2824;--cream:#FFFBF5;--cream-2:#F2ECDE;--blush:#E9D9CF;--ink:#2B1B17;--white:#FFFFFF;--mute:#5E4C47;--line:rgba(76,40,36,.14);--ease:cubic-bezier(.16,1,.3,1);--wipe:cubic-bezier(.77,0,.175,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.01em}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
 .eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--terra);margin-bottom:18px}
-.btn{display:inline-block;background:var(--esp);color:var(--cream);padding:16px 34px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background .2s}
-.btn:hover{background:var(--terra)}
-.btn.light{background:var(--cream);color:var(--esp)}
-.btn.ghost{background:transparent;color:var(--esp);border:1px solid var(--esp)}
+.btn{display:inline-block;background:var(--esp);color:var(--cream);padding:16px 32px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background .3s,transform .3s var(--ease);border:1px solid var(--esp);cursor:pointer}
+.btn:hover{background:var(--terra);border-color:var(--terra);transform:translateY(-2px)}
+.btn.light{background:var(--cream);color:var(--esp);border-color:var(--cream)}
+.btn.light:hover{background:var(--blush);border-color:var(--blush);color:var(--esp)}
+.btn.ghost{background:transparent;color:var(--esp)}
 .btn.ghost:hover{background:var(--esp);color:var(--cream)}
-nav{position:sticky;top:0;z-index:10;background:rgba(255,251,245,.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(76,40,36,.12)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
-nav .logo img{height:36px;display:block}
-nav ul{display:flex;gap:26px;list-style:none;align-items:center;white-space:nowrap}
-nav a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--esp);text-decoration:none}
-nav .cta{background:var(--esp);color:var(--cream);padding:11px 20px}
-@media (max-width:900px){nav ul{display:none}}
-header.hero{position:relative;background:var(--terra);color:var(--cream);overflow:hidden}
-header.hero .bg{position:absolute;inset:0;background:url('assets/skin-face.jpg') center 30%/cover no-repeat;opacity:.35;filter:saturate(.7)}
-header.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(107,71,61,.97) 0%,rgba(107,71,61,.85) 55%,rgba(107,71,61,.55) 100%)}
-header.hero .wrap{position:relative;z-index:2;padding:90px 28px 90px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-@media (max-width:900px){header.hero .wrap{grid-template-columns:1fr;gap:40px}}
-header.hero .eyebrow{color:var(--cream-2)}
-header.hero h1{font-size:clamp(30px,4.2vw,54px);line-height:1.12;max-width:16ch;color:var(--cream)}
-header.hero h1 em{font-style:italic;color:var(--cream-2)}
-header.hero .tag{font-size:clamp(15px,1.6vw,18px);max-width:54ch;margin:26px 0 34px;color:rgba(255,251,245,.88)}
-.pillars{display:flex;border-top:1px solid rgba(255,251,245,.35);margin-top:40px;max-width:640px}
-.pillars div{flex:1;padding:18px 0 0;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-2);border-right:1px solid rgba(255,251,245,.3);text-align:center}
-.pillars div:last-child{border-right:none}
-.hform{background:var(--cream);color:var(--ink);padding:34px 32px;border-top:4px solid var(--esp);box-shadow:0 30px 70px rgba(43,27,23,.4)}
+.btn.ghost-light{background:transparent;color:var(--cream);border-color:rgba(255,251,245,.6)}
+.btn.ghost-light:hover{background:rgba(255,251,245,.14);color:var(--cream)}
+
+/* grain */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* reveals */
+.rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none;filter:none}
+.rv-img{overflow:hidden}
+.rv-img img{clip-path:inset(0 0 100% 0);transform:scale(1.1);transition:clip-path 1.3s var(--wipe),transform 1.8s var(--ease);transition-delay:var(--d,0s)}
+.rv-img.in img{clip-path:inset(0 0 0 0);transform:scale(1)}
+.line{height:1px;background:var(--terra);width:0;opacity:.5;transition:width 1.2s var(--wipe);transition-delay:var(--d,0s)}
+.line.in{width:96px}
+@media (prefers-reduced-motion:reduce){.rv,.rv-img img,.line{transition:none!important;opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;width:96px}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,251,245,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);animation:drop .9s var(--ease) both}
+@keyframes drop{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;transition:height .4s var(--ease)}
+body.scrolled nav .wrap{height:62px}
+nav .logo img{height:34px;display:block}
+nav ul{display:flex;gap:24px;list-style:none;align-items:center;white-space:nowrap}
+nav ul a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--esp);text-decoration:none;position:relative;padding-bottom:3px}
+nav ul a:not(.cta)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+nav ul a:not(.cta):hover::after{transform:scaleX(1);transform-origin:left}
+nav .results{display:inline-flex;align-items:center;gap:7px}
+nav .results i{width:6px;height:6px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(107,71,61,.5);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(107,71,61,.45)}70%{box-shadow:0 0 0 9px rgba(107,71,61,0)}100%{box-shadow:0 0 0 0 rgba(107,71,61,0)}}
+nav .cta{background:var(--esp);color:var(--cream)!important;padding:11px 20px}
+nav .mob{display:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--esp);text-decoration:none;border:1px solid var(--esp);padding:9px 14px}
+@media (max-width:980px){nav ul{display:none}nav .mob{display:inline-block}}
+
+/* hero */
+header.hero{position:relative;color:var(--cream);overflow:hidden;min-height:88vh;display:flex;align-items:center;background:#3a221e}
+header.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;animation:kb 24s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+header.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,27,23,.66) 0%,rgba(43,27,23,.42) 42%,rgba(43,27,23,.10) 78%,rgba(43,27,23,0) 100%),linear-gradient(180deg,rgba(43,27,23,.25) 0%,rgba(43,27,23,0) 22%,rgba(43,27,23,0) 70%,rgba(43,27,23,.35) 100%)}
+header.hero .wrap{position:relative;z-index:2;width:100%;padding-top:84px;padding-bottom:84px;display:grid;grid-template-columns:1.1fr .85fr;gap:60px;align-items:center}
+header.hero .eyebrow{color:var(--cream-2);text-shadow:0 1px 12px rgba(0,0,0,.35)}
+header.hero h1{font-size:clamp(38px,5.2vw,68px);line-height:1.04;color:var(--cream);text-shadow:0 2px 24px rgba(0,0,0,.28)}
+header.hero h1 em{font-style:italic;color:var(--blush)}
+.hl{display:block;overflow:hidden}
+.hl>span{display:block;transform:translateY(110%);animation:rise 1.1s var(--ease) forwards}
+.hl:nth-child(1)>span{animation-delay:.25s}.hl:nth-child(2)>span{animation-delay:.4s}
+@keyframes rise{to{transform:none}}
+.fade{opacity:0;animation:fadeup 1.1s var(--ease) forwards}
+.fade.d1{animation-delay:.1s}.fade.d2{animation-delay:.75s}.fade.d3{animation-delay:.95s}.fade.d4{animation-delay:1.15s}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+header.hero .tag{font-size:clamp(15px,1.5vw,18px);max-width:52ch;margin:24px 0 30px;color:rgba(255,251,245,.94);text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hform{background:rgba(255,251,245,.97);color:var(--ink);padding:32px 30px;border-top:4px solid var(--esp);box-shadow:0 30px 70px rgba(43,27,23,.35)}
 .hform .k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
-.hform h3{font-size:28px;color:var(--esp);margin-bottom:6px}
-.hform p{font-size:13.5px;color:var(--mute);margin-bottom:16px}
+.hform h3{font-size:28px;color:var(--esp);margin-bottom:6px;line-height:1.15}
+.hform p{font-size:13.5px;color:var(--mute);margin-bottom:12px}
 .hform label{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin:10px 0 5px}
-.hform input,.hform select{width:100%;padding:12px 14px;border:1px solid var(--cream-2);background:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink)}
-.hform .btn{width:100%;text-align:center;margin-top:16px;padding:15px 20px}
+.hform input,.hform select{width:100%;padding:12px 14px;border:1px solid var(--cream-2);background:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);transition:border-color .3s}
+.hform input:focus,.hform select:focus{outline:none;border-color:var(--terra)}
+.hform .btn{width:100%;text-align:center;margin-top:16px}
 .hform .fine{font-size:11px;color:#8A7A75;margin:12px 0 0;line-height:1.5}
 .hform .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cue{position:absolute;left:28px;bottom:26px;width:1px;height:56px;background:rgba(255,251,245,.3);overflow:hidden;z-index:2}
+.cue::after{content:"";position:absolute;left:0;top:-100%;width:100%;height:100%;background:var(--blush);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{to{top:100%}}
+@media (max-width:980px){header.hero{min-height:0;display:block}header.hero .wrap{grid-template-columns:1fr;gap:34px;padding-top:44vh;padding-bottom:50px}header.hero .scrim{background:linear-gradient(180deg,rgba(43,27,23,0) 0%,rgba(43,27,23,.15) 30vh,rgba(43,27,23,.78) 46vh,rgba(43,27,23,.9) 100%)}header.hero video{object-position:center 40%;height:62vh;bottom:auto}.cue{display:none}}
 @media (max-width:520px){.hform .row{grid-template-columns:1fr}}
-section{padding:96px 0}
+
+/* ticker */
+.ticker{background:var(--esp);color:var(--cream);overflow:hidden}
+.ticker .track{display:flex;width:max-content;animation:tick 46s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.ticker span{padding:15px 24px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:24px;color:rgba(255,251,245,.88)}
+.ticker span i{font-style:normal;color:var(--blush);font-size:8px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{background:var(--cream-2);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{padding:30px 10px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,4vw,48px);line-height:1;color:var(--esp)}
+.stat span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra)}
+
+section{padding:100px 0;position:relative}
 section.alt{background:var(--cream-2)}
 section.dark{background:var(--esp);color:var(--cream)}
-section h2{font-size:clamp(26px,3.2vw,42px);line-height:1.2;margin-bottom:22px;max-width:24ch;color:var(--esp)}
+section h2{font-size:clamp(28px,3.4vw,46px);line-height:1.14;margin-bottom:20px;max-width:24ch;color:var(--esp)}
+section h2 em{font-style:italic;color:var(--terra)}
 section.dark h2,section.dark h3{color:var(--cream)}
-section.dark .eyebrow{color:var(--cream-2)}
+section.dark h2 em{color:var(--blush)}
+section.dark .eyebrow{color:var(--blush)}
 .lead{font-size:17px;max-width:60ch;color:var(--mute)}
-section.dark .lead{color:rgba(255,251,245,.85)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--cream-2)}
-@media (max-width:860px){.two{grid-template-columns:1fr;gap:36px}}
-.statement{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.4vw,28px);line-height:1.45;color:var(--esp);border-left:2px solid var(--terra);padding-left:26px}
-.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
-@media (max-width:1000px){.grid5{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.grid5{grid-template-columns:1fr}}
-.concern{background:var(--white);padding:30px 24px;border:1px solid var(--cream-2);border-top:3px solid var(--terra);text-decoration:none;color:inherit;display:block;transition:transform .2s}
-.concern:hover{transform:translateY(-4px)}
-.concern .n{font-size:11px;letter-spacing:.28em;color:var(--terra);margin-bottom:12px}
-.concern h3{font-size:20px;margin-bottom:10px;color:var(--esp)}
-.concern p{font-size:14px;color:var(--mute)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+section.dark .lead{color:rgba(255,251,245,.86)}
+
+/* concerns list */
+.clist{margin-top:44px;border-top:1px solid var(--line)}
+.crow{display:grid;grid-template-columns:70px 1fr auto;gap:22px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;position:relative;transition:padding-left .45s var(--ease)}
+.crow:hover{padding-left:16px}
+.crow .idx{font-size:11px;letter-spacing:.24em;color:var(--terra)}
+.crow h3{font-size:clamp(24px,2.6vw,34px);color:var(--esp);line-height:1.1;transition:color .4s}
+.crow:hover h3{color:var(--terra)}
+.crow p{font-size:14.5px;color:var(--mute);margin-top:4px;max-width:62ch}
+.crow .go{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);display:flex;align-items:center;gap:10px;opacity:.55;transition:opacity .4s,transform .45s var(--ease)}
+.crow:hover .go{opacity:1;transform:translateX(-6px)}
+.crow .thumb{display:none}
+#peek{position:fixed;width:230px;aspect-ratio:4/5;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.92) rotate(-2deg);transition:opacity .3s,transform .4s var(--ease);box-shadow:0 26px 60px rgba(43,27,23,.4);overflow:hidden;background:var(--esp)}
+#peek.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}
+#peek img,#peek video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#peek video{opacity:0;transition:opacity .3s}
+#peek .tag{position:absolute;left:0;right:0;bottom:0;background:rgba(76,40,36,.92);color:var(--cream);font-size:9px;letter-spacing:.22em;text-transform:uppercase;padding:9px 10px;text-align:center}
+@media (max-width:820px){#peek{display:none}.crow{grid-template-columns:1fr 92px;gap:14px}.crow .idx,.crow .go{display:none}.crow .thumb{display:block;width:92px;aspect-ratio:4/5;object-fit:cover;grid-row:1;grid-column:2}}
+
+/* consultation */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:46px;border:1px solid rgba(255,251,245,.18)}
 @media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.steps{grid-template-columns:1fr}}
-.jstep{background:rgba(255,251,245,.06);border:1px solid rgba(255,251,245,.18);padding:26px}
-.jstep .n{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--cream-2);line-height:1;margin-bottom:8px}
-.jstep h3{font-size:19px;margin-bottom:8px;color:var(--cream)}
-.jstep p{font-size:14px;color:rgba(255,251,245,.8)}
-.locs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
-@media (max-width:860px){.locs{grid-template-columns:1fr}}
-.loc{background:var(--white);border:1px solid var(--cream-2);overflow:hidden}
-.loc img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.loc div{padding:28px}
-.loc h3{font-size:24px;color:var(--esp);margin-bottom:6px}
+.jstep{padding:30px 26px;border-right:1px solid rgba(255,251,245,.16);position:relative;overflow:hidden;transition:background .5s}
+.jstep:last-child{border-right:0}
+.jstep:hover{background:rgba(255,251,245,.05)}
+.jstep .n{font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--blush);line-height:1;opacity:.55;margin-bottom:10px}
+.jstep h3{font-size:22px;margin-bottom:8px;color:var(--cream)}
+.jstep p{font-size:14px;color:rgba(255,251,245,.82)}
+section.dark::after{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-160px;border-radius:50%;background:var(--blush);filter:blur(140px);opacity:.1;pointer-events:none;animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.08}50%{transform:scale(1.15);opacity:.14}}
+
+/* results teaser */
+.results-t{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media (max-width:860px){.results-t{grid-template-columns:1fr;gap:34px}}
+.results-t .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.results-t .pics .rv-img{aspect-ratio:4/5;border:1px solid var(--line);position:relative}
+.results-t .pics .rv-img:nth-child(2){margin-top:44px}
+.results-t .pics img{width:100%;height:100%;object-fit:cover;display:block}
+.results-t .pics span{position:absolute;left:0;right:0;bottom:0;background:rgba(76,40,36,.86);color:var(--cream);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 10px}
+.lock{margin-top:26px;border:1px solid var(--line);background:var(--white);padding:22px 24px;display:flex;gap:16px;align-items:center}
+.lock .ico{flex:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--terra);display:flex;align-items:center;justify-content:center;color:var(--terra)}
+.lock p{font-size:14px;color:var(--mute)}
+
+/* locations */
+.locwide{margin-top:40px;aspect-ratio:21/8;border:1px solid var(--line)}
+.locwide img{width:100%;height:100%;object-fit:cover;display:block}
+.locs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+@media (max-width:860px){.locs{grid-template-columns:1fr}.locwide{aspect-ratio:16/10}}
+.loc{background:var(--white);border:1px solid var(--line);padding:30px;transition:transform .5s var(--ease),box-shadow .5s}
+.loc:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(43,27,23,.4)}
+.loc .k{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra)}
+.loc h3{font-size:30px;color:var(--esp);margin:4px 0 6px}
 .loc p{font-size:14.5px;color:var(--mute);margin-bottom:16px}
-.team{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
-@media (max-width:860px){.team{grid-template-columns:1fr}}
-.portrait{aspect-ratio:4/5;object-fit:cover;object-position:center top;width:100%;border:1px solid var(--cream-2);display:block}
-.people{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-.person{display:flex;gap:14px;align-items:center;background:var(--white);border:1px solid var(--cream-2);padding:14px}
-.person img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center top;flex:none}
-.person h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;color:var(--esp)}
+
+/* team */
+.team{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:start}
+@media (max-width:900px){.team{grid-template-columns:1fr}}
+.team .pics{position:sticky;top:110px;display:grid;gap:14px}
+@media (max-width:900px){.team .pics{position:static}}
+.team .pics .rv-img{border:1px solid var(--line)}
+.team .pics img{width:100%;display:block;object-fit:cover}
+.team .pics .a img{aspect-ratio:3/2;object-position:center 30%}
+.team .pics .b img{aspect-ratio:4/5;object-position:center 20%}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+@media (max-width:560px){.people{grid-template-columns:1fr}}
+.person{display:flex;gap:14px;align-items:center;background:var(--white);border:1px solid var(--line);padding:14px;transition:transform .45s var(--ease),box-shadow .45s}
+.person:hover{transform:translateY(-3px);box-shadow:0 20px 40px -26px rgba(43,27,23,.45)}
+.person img{width:74px;height:74px;border-radius:50%;object-fit:cover;object-position:center top;flex:none;transition:transform .6s var(--ease)}
+.person:hover img{transform:scale(1.06)}
+.person h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:19px;color:var(--esp);line-height:1.2}
 .person p{font-size:12.5px;color:var(--mute);line-height:1.5}
-.qa{margin-top:36px;border-top:1px solid var(--cream-2)}
-.qa details{border-bottom:1px solid var(--cream-2)}
-.qa summary{cursor:pointer;list-style:none;padding:20px 0;font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--esp);display:flex;justify-content:space-between;gap:20px}
+.qa{margin-top:34px;border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{cursor:pointer;list-style:none;padding:20px 0;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--esp);display:flex;justify-content:space-between;gap:20px}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary::after{content:'+';color:var(--terra)}
-.qa details[open] summary::after{content:'\2013'}
+.qa summary::after{content:'+';color:var(--terra);transition:transform .4s var(--ease)}
+.qa details[open] summary::after{transform:rotate(45deg)}
 .qa p{padding:0 0 20px;font-size:15px;max-width:66ch;color:var(--mute)}
-.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
-@media (max-width:860px){.edu{grid-template-columns:1fr}}
-.vid{background:var(--white);border:1px solid var(--cream-2);padding:24px}
-.vid .ph{aspect-ratio:16/9;background:linear-gradient(135deg,var(--terra),var(--esp));display:flex;align-items:center;justify-content:center;color:var(--cream-2);font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:16px}
-.vid h3{font-size:19px;margin-bottom:6px;color:var(--esp)}
-.vid p{font-size:14px;color:var(--mute)}
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-@media (max-width:860px){.reviews{grid-template-columns:1fr}}
-.rev{background:var(--white);border:1px solid var(--cream-2);padding:26px}
-.rev .stars{color:var(--terra);letter-spacing:.2em;font-size:13px;margin-bottom:10px}
-.rev p{font-size:14.5px;color:var(--mute);font-style:italic}
-.rev span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-top:12px;font-style:normal}
+
+/* reels */
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+@media (max-width:900px){.reels{grid-template-columns:1fr 1fr}}
+.reel{background:var(--white);border:1px solid var(--line);padding:12px;transition:transform .5s var(--ease),box-shadow .5s}
+.reel:hover{transform:translateY(-5px);box-shadow:0 30px 60px -34px rgba(43,27,23,.5)}
+.reel .frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--esp);cursor:pointer}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel .play{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:rgba(255,251,245,.9);display:flex;align-items:center;justify-content:center;transition:transform .45s var(--ease),opacity .4s}
+.reel .play::before{content:"";border-left:14px solid var(--esp);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.reel .play::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(255,251,245,.8);animation:ring 2.2s var(--ease) infinite}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.3);opacity:0}}
+.reel:hover .play{transform:scale(.9)}
+.reel.playing .play{opacity:0;pointer-events:none}
+.reel .hint{position:absolute;left:10px;top:10px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;background:rgba(43,27,23,.6);color:var(--cream);padding:5px 8px;opacity:0;transition:opacity .4s}
+.reel.previewing .hint{opacity:1}
+.reel h3{font-size:18px;margin:12px 2px 3px;color:var(--esp);line-height:1.2}
+.reel p{font-size:13px;color:var(--mute);margin:0 2px 4px}
+.ig{margin-top:22px;font-size:14px;color:var(--mute)}
+.ig a{color:var(--esp)}
+
+/* reviews carousel */
+.car{margin-top:46px;position:relative}
+.car .viewport{overflow:hidden}
+.car .track{display:flex;transition:transform .9s var(--ease)}
+.slide{flex:0 0 50%;padding:0 11px}
+@media (max-width:860px){.slide{flex-basis:100%}}
+.card{background:var(--white);border:1px solid var(--line);padding:34px 32px;height:100%;display:flex;flex-direction:column;gap:18px;position:relative}
+.card::before{content:"\201C";position:absolute;right:22px;top:-6px;font-family:'Cormorant Garamond',serif;font-size:110px;color:var(--blush);line-height:1}
+.card .stars{color:var(--terra);letter-spacing:.2em;font-size:13px}
+.card blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,1.8vw,23px);line-height:1.45;color:var(--esp);position:relative}
+.card cite{margin-top:auto;font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra)}
+.car .ctrl{display:flex;align-items:center;justify-content:space-between;margin-top:26px;gap:16px}
+.car .dots{display:flex;gap:8px}
+.car .dots button{width:26px;height:3px;border:0;background:var(--line);cursor:pointer;transition:background .4s,width .4s var(--ease)}
+.car .dots button.on{background:var(--esp);width:46px}
+.car .arrows{display:flex;gap:10px}
+.car .arrows button{width:48px;height:48px;border-radius:50%;border:1px solid var(--esp);background:transparent;color:var(--esp);cursor:pointer;font-size:18px;transition:background .3s,color .3s}
+.car .arrows button:hover{background:var(--esp);color:var(--cream)}
+
+/* booking */
 .consult{text-align:center}
-.consult form{max-width:520px;margin:34px auto 0;display:grid;gap:12px;text-align:left}
+.consult h2{margin:0 auto 14px;max-width:none}
+.consult .lead{margin:0 auto}
+.consult form{max-width:540px;margin:34px auto 0;display:grid;gap:12px;text-align:left}
 .consult label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--terra)}
-.consult input,.consult select,.consult textarea{width:100%;padding:14px 16px;border:1px solid var(--cream-2);background:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink)}
+.consult input,.consult select,.consult textarea{width:100%;padding:14px 16px;border:1px solid var(--line);background:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink)}
 .consult textarea{min-height:110px}
 .fine-p{font-size:13px;color:#8A7A75;max-width:62ch;margin:26px auto 0}
 footer{background:var(--esp);color:rgba(255,251,245,.75);padding:60px 0 40px;font-size:13px}
@@ -123,120 +250,168 @@ footer img{height:32px;margin-bottom:16px;filter:brightness(0) invert(1);opacity
 footer h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-2);margin-bottom:12px}
 footer a{color:rgba(255,251,245,.85);text-decoration:none}
 footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,251,245,.2);padding-top:22px;font-size:11px;letter-spacing:.04em;color:rgba(255,251,245,.55)}
-.demo-note{position:fixed;bottom:14px;right:14px;background:#0A2A28;color:#00D4BC;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;z-index:20;font-family:'DM Sans',sans-serif}
-header.hero video.bg{width:100%;height:100%;object-fit:cover;object-position:center 45%;background:none;opacity:.5}
-@media (prefers-reduced-motion:reduce){header.hero video.bg{display:none}}
-@media (max-width:900px){header.hero video.bg{opacity:.65;object-position:center top} header.hero .scrim{background:linear-gradient(180deg,rgba(0,0,0,.05) 0,rgba(0,0,0,.25) 30vh,rgba(0,0,0,.72) 42vh,rgba(0,0,0,.8) 100%)} header.hero .wrap{padding-top:42vh}}
-.person img{width:84px;height:84px}
-.people{grid-template-columns:1fr 1fr}
-.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-@media (max-width:900px){.reels{grid-template-columns:1fr 1fr}}
-.reel{background:var(--white);border:1px solid var(--cream-2);padding:14px}
-.reel video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;display:block}
-.reel h3{font-size:16px;margin:12px 0 4px}
-.reel p{font-size:13px;color:var(--mute)}
+.demo-note{position:fixed;bottom:14px;right:14px;background:#0A2A28;color:#00D4BC;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;z-index:50;font-family:'DM Sans',sans-serif}
 </style>
 </head>
 <body>
+<script>
+(function(){if('scrollRestoration' in history)history.scrollRestoration='manual';function t(){if(location.hash)return;var r=document.documentElement,p=r.style.scrollBehavior;r.style.scrollBehavior='auto';window.scrollTo(0,0);r.style.scrollBehavior=p;}t();window.addEventListener('load',t);window.addEventListener('pageshow',function(e){if(e.persisted)t();});})();
+</script>
 <div class="demo-note">Concept by Clinic Catalyst</div>
+
 <nav>
   <div class="wrap">
     <a class="logo" href="#top"><img src="assets/logo.png" alt="Derm Haus"></a>
-    <ul><li><a href="#concerns">Concerns</a></li><li><a href="#consult-how">The consultation</a></li><li><a href="#locations">Locations</a></li><li><a href="#team">Our team</a></li><li><a href="#learn">Learn</a></li><li><a class="cta" href="#consult">Book a consultation</a></li></ul>
+    <ul>
+      <li><a href="#concerns">Concerns</a></li>
+      <li><a href="#consult-how">The consultation</a></li>
+      <li><a class="results" href="injectables.html"><i></i>Results</a></li>
+      <li><a href="#team">Our team</a></li>
+      <li><a href="#learn">Learn</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a class="cta" href="#consult">Book a consultation</a></li>
+    </ul>
+    <a class="mob" href="#consult">Book</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="bg"></div>
-  <video class="bg" autoplay muted loop playsinline preload="metadata" poster="assets/hero-room-poster.jpg" aria-hidden="true"><source src="assets/hero-room.mp4" type="video/mp4"></video>
+  <video autoplay muted loop playsinline preload="auto" poster="assets/hero-skin-poster.jpg" aria-hidden="true"><source src="assets/hero-skin.mp4" type="video/mp4"></video>
   <div class="scrim"></div>
   <div class="wrap">
     <div>
-      <div class="eyebrow">Skin health and aesthetic medicine &middot; Annerley and Bald Hills, Brisbane</div>
-      <h1>Your skin has a story. <em>Let's read it properly.</em></h1>
-      <p class="tag">Pigmentation that will not fade. Texture that has changed. Skin that looks tired before you do. Every plan at Derm Haus starts with a one-hour consultation that looks at the cause first, then the pathway. Family-run, nurse and doctor led, since 2017.</p>
-      <div class="pillars"><div>Consultation first</div><div>Concern-led</div><div>Two clinics</div><div>Nurses and doctors</div></div>
+      <div class="eyebrow fade d1">Skin health and aesthetic medicine &middot; Annerley and Bald Hills, Brisbane</div>
+      <h1><span class="hl"><span>Your skin has a story.</span></span><span class="hl"><span><em>Let's read it properly.</em></span></span></h1>
+      <p class="tag fade d2">Pigmentation, texture, skin that looks tired. Every new client at Derm Haus starts with a one-hour consultation, so the team looks at the cause before anything is treated. Family-run, nurse and doctor led, since 2017.</p>
+      <div class="hero-btns fade d3"><a class="btn light" href="#consult">Book a consultation</a><a class="btn ghost-light" href="injectables.html">See the results</a></div>
     </div>
-    <div class="hform" id="hero-form">
+    <div class="hform fade d4" id="hero-form">
       <div class="k">Free 60-second skin assessment</div>
       <h3>Tell us about your skin.</h3>
-      <p>Six quick questions. A dermal therapist reads every one and tells you what we would look at first.</p>
+      <p>A few quick questions, and the team comes back to you with consultation times at your closest clinic.</p>
       <form onsubmit="event.preventDefault();this.innerHTML='<p style=font-size:15px;color:#5E4C47;padding:20px 0>Thank you. You will get a text shortly with consultation times at your closest clinic.</p>'">
         <div class="row"><div><label>First name</label><input type="text" placeholder="Your first name" required></div><div><label>Mobile</label><input type="tel" placeholder="04.." required></div></div>
-        <label>Email</label><input type="email" placeholder="you@email.com">
-        <label>What is bothering you most?</label><select><option>Pigmentation that is getting worse</option><option>Texture has changed, or scarring</option><option>My skin looks tired, or I am noticing ageing</option><option>Acne, breakouts, or the marks they leave</option><option>Nothing major, I want to get ahead of it</option><option>Medical aesthetics enquiry</option></select>
+        <label>What is bothering you most?</label><select><option>Pigmentation</option><option>Acne, or the marks it leaves</option><option>Texture or scarring</option><option>Skin that looks tired, or ageing</option><option>Nothing major, I want to get ahead of it</option><option>Medical aesthetics enquiry</option></select>
         <label>Closest clinic</label><select><option>Annerley, south side</option><option>Bald Hills, north side</option><option>Either</option></select>
         <button class="btn" type="submit">Send to Derm Haus</button>
-        <p class="fine">Everything starts with a one-hour consultation, $100 deposit credited on the day. By sending you agree to hear from Derm Haus by text and email.</p>
+        <p class="fine">Consultations are one hour, with a $100 deposit credited on the day. By sending you agree to hear from Derm Haus by text and email.</p>
       </form>
     </div>
   </div>
+  <div class="cue"></div>
 </header>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>Skin consultations<i>&#9670;</i></span><span>Pigmentation<i>&#9670;</i></span><span>Acne<i>&#9670;</i></span><span>Texture<i>&#9670;</i></span><span>Skin needling<i>&#9670;</i></span><span>LED light therapy<i>&#9670;</i></span><span>Chemical peels<i>&#9670;</i></span><span>Annerley<i>&#9670;</i></span><span>Bald Hills<i>&#9670;</i></span>
+  <span>Skin consultations<i>&#9670;</i></span><span>Pigmentation<i>&#9670;</i></span><span>Acne<i>&#9670;</i></span><span>Texture<i>&#9670;</i></span><span>Skin needling<i>&#9670;</i></span><span>LED light therapy<i>&#9670;</i></span><span>Chemical peels<i>&#9670;</i></span><span>Annerley<i>&#9670;</i></span><span>Bald Hills<i>&#9670;</i></span>
+</div></div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat rv"><b data-count="2017" data-plain="1">2017</b><span>Family-run since</span></div>
+    <div class="stat rv" style="--d:.1s"><b data-count="2">0</b><span>Brisbane clinics</span></div>
+    <div class="stat rv" style="--d:.2s"><b data-count="1">0</b><span>Hour consultations</span></div>
+  </div>
+</div>
 
 <section id="concerns">
   <div class="wrap">
-    <div class="eyebrow">Start with your concern</div>
-    <h2>You do not need to know the treatment. You need to know it can be looked at.</h2>
-    <p class="lead">Nobody searches for a device. They notice something in the mirror. Choose what you are noticing and we will show you what a consultation looks at, and where the pathway can go from there.</p>
-    <div class="grid5">
-      <a class="concern" href="#consult"><div class="n">01</div><h3>Pigmentation</h3><p>Sun, hormones, post-inflammatory. The type decides the pathway, which is why we look before we treat.</p></a>
-      <a class="concern" href="#consult"><div class="n">02</div><h3>Texture and scarring</h3><p>Acne scarring, uneven texture, enlarged pores. Treated in stages, planned as one pathway.</p></a>
-      <a class="concern" href="#consult"><div class="n">03</div><h3>Skin quality and ageing</h3><p>Tired-looking skin, fine lines, loss of firmness. Usually several small things, put in the right order.</p></a>
-      <a class="concern" href="#consult"><div class="n">04</div><h3>Acne</h3><p>Active breakouts first, then the marks they leave. Alongside medical support where appropriate.</p></a>
-      <a class="concern" href="#consult"><div class="n">05</div><h3>Preventative</h3><p>A baseline of where your skin is now, then a simple plan of homecare and maintenance to stay ahead of it.</p></a>
+    <div class="eyebrow rv">Start with your concern</div>
+    <h2 class="rv" style="--d:.1s">You do not need to know the treatment. <em>Start with what you see.</em></h2>
+    <div class="line rv" style="--d:.25s"></div>
+    <p class="lead rv" style="margin-top:20px;--d:.2s">Hover a concern to see it from the Derm Haus Instagram, and tap through to watch more.</p>
+    <div class="clist">
+      <a class="crow rv" href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener" data-img="assets/concerns/pigmentation.jpg" data-tag="Pigmentation from summer">
+        <span class="idx">No. 01</span>
+        <div><h3>Pigmentation</h3><p>Sun, hormones, or marks left behind. The type decides the pathway, which is why the team looks before treating.</p></div>
+        <span class="go">From our feed &rarr;</span>
+        <img class="thumb" src="assets/concerns/pigmentation.jpg" alt="Pigmentation treatment journey from the Derm Haus Instagram">
+      </a>
+      <a class="crow rv" href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener" data-img="assets/concerns/acne.jpg" data-tag="Struggling with acne?">
+        <span class="idx">No. 02</span>
+        <div><h3>Acne</h3><p>Active breakouts first, then the marks they leave.</p></div>
+        <span class="go">From our feed &rarr;</span>
+        <img class="thumb" src="assets/concerns/acne.jpg" alt="Acne treatment journey from the Derm Haus Instagram">
+      </a>
+      <a class="crow rv" href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener" data-img="assets/clips/texture.jpg" data-video="assets/clips/texture.mp4" data-tag="Advanced skin needling">
+        <span class="idx">No. 03</span>
+        <div><h3>Texture and scarring</h3><p>Uneven texture, scarring and enlarged pores, planned in stages.</p></div>
+        <span class="go">Watch &rarr;</span>
+        <img class="thumb" src="assets/clips/texture.jpg" alt="A dermal therapist setting up for skin needling">
+      </a>
+      <a class="crow rv" href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener" data-img="assets/clips/ageing.jpg" data-video="assets/clips/ageing.mp4" data-tag="LED light therapy">
+        <span class="idx">No. 04</span>
+        <div><h3>Skin that looks tired</h3><p>Fine lines, dullness and loss of firmness, usually several small things put in the right order.</p></div>
+        <span class="go">Watch &rarr;</span>
+        <img class="thumb" src="assets/clips/ageing.jpg" alt="LED light therapy at Derm Haus">
+      </a>
+      <a class="crow rv" href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener" data-img="assets/clips/consult.jpg" data-video="assets/clips/consult.mp4" data-tag="Skin consultations">
+        <span class="idx">No. 05</span>
+        <div><h3>Getting ahead of it</h3><p>A baseline of where your skin is now, then a simple plan to stay ahead of it.</p></div>
+        <span class="go">Watch &rarr;</span>
+        <img class="thumb" src="assets/clips/consult.jpg" alt="A Derm Haus dermal therapist talking about skin consultations">
+      </a>
     </div>
   </div>
 </section>
+<div id="peek"><img id="peekimg" src="" alt=""><video id="peekvid" muted loop playsinline preload="none"></video><span class="tag" id="peektag"></span></div>
 
 <section class="dark" id="consult-how">
   <div class="wrap">
-    <div class="eyebrow">The consultation</div>
-    <h2>One hour. Your skin, your history, and a plan built for you.</h2>
-    <p class="lead">Every new client starts here, for skin and for medical aesthetics. The $100 deposit is credited towards retail or treatment on the day. You leave with a written treatment plan, and we follow it up with you, not just email it and hope.</p>
+    <div class="eyebrow rv">The consultation</div>
+    <h2 class="rv" style="--d:.1s">One hour. Your skin, your history, <em>and a plan built for you.</em></h2>
+    <p class="lead rv" style="--d:.2s">Every new client starts here, for skin and for medical aesthetics. The $100 deposit is credited towards retail or treatment on the day, and you leave with a written treatment plan.</p>
     <div class="steps">
-      <div class="jstep"><div class="n">01</div><h3>We look</h3><p>Skin analysis, history, what you have tried, what has and has not worked, and what is driving the concern underneath.</p></div>
-      <div class="jstep"><div class="n">02</div><h3>We plan</h3><p>A written treatment plan: the pathway, the order, homecare and what to expect. Sent to you the same day.</p></div>
-      <div class="jstep"><div class="n">03</div><h3>We follow up</h3><p>A text the next day, education on your pathway, and a call from your clinic coordinator if you have questions. No chasing, no pressure.</p></div>
-      <div class="jstep"><div class="n">04</div><h3>We keep going</h3><p>Your next treatment is booked before you leave. Skin and medical aesthetics work together, so your plan can move between them as your skin changes.</p></div>
+      <div class="jstep rv" style="--d:.05s"><div class="n">01</div><h3>We look</h3><p>Your skin, your history, what you have tried, and what is driving the concern underneath.</p></div>
+      <div class="jstep rv" style="--d:.15s"><div class="n">02</div><h3>We plan</h3><p>A written treatment plan: the pathway, the order, homecare and what to expect.</p></div>
+      <div class="jstep rv" style="--d:.25s"><div class="n">03</div><h3>We follow up</h3><p>The team checks in after your consultation, so your questions are answered before your first treatment.</p></div>
+      <div class="jstep rv" style="--d:.35s"><div class="n">04</div><h3>We keep going</h3><p>Skin and medical aesthetics work together, so your plan can move between them as your skin changes.</p></div>
     </div>
-    <a class="btn light" href="#consult" style="margin-top:36px">Book a consultation</a>
+    <div class="rv" style="margin-top:38px;--d:.3s"><a class="btn light" href="#consult">Book a consultation</a></div>
   </div>
 </section>
 
-<section class="alt" id="locations">
-  <div class="wrap">
-    <div class="eyebrow">Two clinics, one team</div>
-    <h2>North side or south side, the same care.</h2>
-    <p class="lead">Started at Annerley in 2017, grown to Bald Hills. Book online at whichever clinic is closer, and your plan travels with you.</p>
-    <div class="locs">
-      <div class="loc"><img src="assets/clinic-lounge.jpg" alt="Derm Haus Annerley"><div><h3>Annerley</h3><p>Level 1, 3/2 Stephens St, Annerley QLD 4103<br>(07) 3132 7999</p><a class="btn ghost" href="#consult">Book Annerley</a></div></div>
-      <div class="loc"><img src="assets/clinic-wait.jpg" alt="Derm Haus Bald Hills"><div><h3>Bald Hills</h3><p>1/2091 Gympie Road, Bald Hills QLD 4036<br>(07) 3132 7999</p><a class="btn ghost" href="#consult">Book Bald Hills</a></div></div>
+<section class="alt" id="results">
+  <div class="wrap results-t">
+    <div class="pics">
+      <div class="rv-img"><img src="assets/concerns/pigmentation.jpg" alt="A pigmentation treatment journey from the Derm Haus Instagram"><span>Pigmentation</span></div>
+      <div class="rv-img" style="--d:.15s"><img src="assets/concerns/acne.jpg" alt="An acne treatment journey from the Derm Haus Instagram"><span>Acne</span></div>
+    </div>
+    <div>
+      <div class="eyebrow rv">Results</div>
+      <h2 class="rv" style="--d:.1s">Real Derm Haus clients, <em>from our own feed.</em></h2>
+      <p class="lead rv" style="--d:.2s">Skin treatment journeys are in the results gallery. Medical aesthetics results are shown privately, in line with Australian advertising rules.</p>
+      <div class="lock rv" style="--d:.3s"><div class="ico">&#128274;</div><p>Ask for your gallery code at your consultation to see the medical aesthetics results.</p></div>
+      <div class="rv" style="margin-top:28px;--d:.35s"><a class="btn" href="injectables.html">Open the results gallery</a></div>
     </div>
   </div>
 </section>
 
 <section id="team">
   <div class="wrap team">
-    <div><img class="portrait" src="assets/team/team-white.jpg" alt="The Derm Haus team" style="aspect-ratio:16/10;object-position:center 40%"><img class="portrait" src="assets/team/team-bts.jpg" alt="The Derm Haus team behind the scenes" style="margin-top:14px;aspect-ratio:4/3"></div>
+    <div class="pics">
+      <div class="rv-img a"><img src="assets/team.jpg" alt="The Derm Haus team"></div>
+      <div class="rv-img b" style="--d:.15s"><img src="assets/owners.jpg" alt="Members of the Derm Haus team"></div>
+    </div>
     <div>
-      <div class="eyebrow">Our team</div>
-      <h2>Family-run. Nurse and doctor led. Fifteen of us across two clinics.</h2>
-      <p class="lead">Derm Haus is owned by three women, two of them registered nurses who still treat every week, and led clinically by Dr Rina Savage. Our nurses and dermal therapists work collaboratively, so your plan can move between skin and medical aesthetics without you having to start again.</p>
+      <div class="eyebrow rv">Our team</div>
+      <h2 class="rv" style="--d:.1s">Family-run. Nurse and doctor led. <em>Two clinics, one team.</em></h2>
+      <p class="lead rv" style="--d:.2s">Derm Haus is owned by Bek with her sister and cousin, who are nurses and treat, and is led clinically by Dr Rina Savage. Nurses and dermal therapists work together, so your plan can move between skin and medical aesthetics without starting again.</p>
       <div class="people">
-        <div class="person"><img src="assets/dr-rina.jpg" alt="Dr Rina Savage"><div><h4>Dr Rina Savage</h4><p>Clinical Director, FACEM MBBS. Oversees the medical aesthetics pathway.</p></div></div>
-        <div class="person"><img src="assets/team/bek.jpg" alt="Bek McNeil"><div><h4>Bek McNeil</h4><p>Co-Owner and Business Manager. Runs the clinics so the team can run the rooms.</p></div></div>
-        <div class="person"><img src="assets/team/lori.jpg" alt="Lori"><div><h4>Lori</h4><p>Co-Owner and Registered Nurse. Still treats every week.</p></div></div>
-        <div class="person"><img src="assets/team/meg.jpg" alt="Meg McNeil"><div><h4>Meg McNeil</h4><p>Co-Owner, Registered Nurse and Clinic Manager, Bald Hills.</p></div></div>
-        <div class="person"><img src="assets/team/allie.jpg" alt="Allie"><div><h4>Allie</h4><p>Registered Nurse and Clinic Manager, Annerley. Four years with Derm Haus.</p></div></div>
-        <div class="person"><img src="assets/team/rachael.jpg" alt="Rachael"><div><h4>Rachael</h4><p>Registered Nurse. A special interest in skin rejuvenation.</p></div></div>
-        <div class="person"><img src="assets/team/tia.jpg" alt="Tia"><div><h4>Tia</h4><p>Registered Nurse.</p></div></div>
-        <div class="person"><img src="assets/skin-analysis.jpg" alt="Our dermal therapists"><div><h4>Our dermal therapists</h4><p>A special interest in pigmentation, texture and skin health. Your skin consultation starts with them.</p></div></div>
+        <div class="person rv"><img src="assets/dr-rina.jpg" alt="Dr Rina Savage"><div><h4>Dr Rina Savage</h4><p>Clinical Director, FACEM MBBS.</p></div></div>
+        <div class="person rv" style="--d:.05s"><img src="assets/team/bek.jpg" alt="Bek McNeil"><div><h4>Bek McNeil</h4><p>Co-Owner and Business Manager.</p></div></div>
+        <div class="person rv" style="--d:.1s"><img src="assets/team/lori.jpg" alt="Lori"><div><h4>Lori</h4><p>Co-Owner and Registered Nurse.</p></div></div>
+        <div class="person rv" style="--d:.15s"><img src="assets/team/meg.jpg" alt="Meg McNeil"><div><h4>Meg McNeil</h4><p>Co-Owner, Registered Nurse and Clinic Manager, Bald Hills.</p></div></div>
+        <div class="person rv" style="--d:.2s"><img src="assets/team/allie.jpg" alt="Allie"><div><h4>Allie</h4><p>Registered Nurse and Clinic Manager, Annerley.</p></div></div>
+        <div class="person rv" style="--d:.25s"><img src="assets/team/rachael.jpg" alt="Rachael"><div><h4>Rachael</h4><p>Registered Nurse.</p></div></div>
+        <div class="person rv" style="--d:.3s"><img src="assets/team/tia.jpg" alt="Tia"><div><h4>Tia</h4><p>Registered Nurse.</p></div></div>
+        <div class="person rv" style="--d:.35s"><img src="assets/clips/texture.jpg" alt="A Derm Haus dermal therapist"><div><h4>Our dermal therapists</h4><p>Skin treatments at both clinics.</p></div></div>
       </div>
-      <div class="qa">
-        <details><summary>Do I need to know what treatment I want?</summary><p>No. Tell us what you are noticing. The consultation works out the pathway, and we explain every option before anything is booked.</p></details>
-        <details><summary>What happens to my $100 deposit?</summary><p>It is credited towards retail or treatment on the day of your consultation. If you decide not to go ahead, it covers the consultation itself.</p></details>
-        <details><summary>Can I see results before I book?</summary><p>Skin results are shared with consent on this site. Results for prescription-only treatments are shared privately after your consultation, in line with Australian advertising rules.</p></details>
-        <details><summary>Which clinic should I choose?</summary><p>Whichever is closer. Annerley on the south side, Bald Hills on the north side, the same team and the same plan.</p></details>
+      <div class="qa rv">
+        <details><summary>Do I need to know what treatment I want?</summary><p>No. Tell us what you are noticing. The consultation works out the pathway, and every option is explained before anything is booked.</p></details>
+        <details><summary>What happens to my $100 deposit?</summary><p>It is credited towards retail or treatment on the day of your consultation.</p></details>
+        <details><summary>Can I see results before I book?</summary><p>Skin treatment journeys are in the results gallery. Results for prescription-only treatments are shared privately after your consultation, in line with Australian advertising rules.</p></details>
+        <details><summary>Which clinic should I choose?</summary><p>Whichever is closer. Annerley on the south side, Bald Hills on the north side.</p></details>
       </div>
     </div>
   </div>
@@ -244,54 +419,67 @@ header.hero video.bg{width:100%;height:100%;object-fit:cover;object-position:cen
 
 <section class="alt" id="learn">
   <div class="wrap">
-    <div class="eyebrow">Learn</div>
-    <h2>What we look at, explained plainly.</h2>
-    <p class="lead">Short videos from the team, so you understand what is possible before you ever book. These four are from our Instagram this year. The concern series below is next.</p>
+    <div class="eyebrow rv">Learn</div>
+    <h2 class="rv" style="--d:.1s">Straight from the clinic, <em>explained plainly.</em></h2>
+    <p class="lead rv" style="--d:.2s">Short videos from the Derm Haus Instagram. Hover to preview, tap to watch with sound.</p>
     <div class="reels">
-      <div class="reel"><video controls playsinline preload="metadata"><source src="assets/reel-06.mp4" type="video/mp4"></video><h3>A tour of the new space</h3><p>Meg walks you through reception and the rooms, and introduces Bek and Lori.</p></div>
-      <div class="reel"><video controls playsinline preload="metadata"><source src="assets/reel-04.mp4" type="video/mp4"></video><h3>Why our LED is different</h3><p>Two wavelengths, what they do in the skin, and why it is part of most plans.</p></div>
-      <div class="reel"><video controls playsinline preload="metadata" poster="assets/reel-01-poster.jpg"><source src="assets/reel-01.mp4" type="video/mp4"></video><h3>The ingredient everyone is asking about</h3><p>What it is, where it comes from, and where it sits in a skin plan.</p></div>
-      <div class="reel"><video controls playsinline preload="metadata"><source src="assets/reel-09.mp4" type="video/mp4"></video><h3>Spend a morning at Derm Haus</h3><p>Through the door and into the room. No talking, just the place.</p></div>
+      <div class="reel rv"><div class="frame"><video playsinline muted preload="none" poster="assets/reel-06-poster.jpg" src="assets/reel-06.mp4"></video><span class="play"></span><span class="hint">Preview</span></div><h3>A tour of the clinic</h3><p>Come along for a little tour.</p></div>
+      <div class="reel rv" style="--d:.1s"><div class="frame"><video playsinline muted preload="none" poster="assets/reel-04-poster.jpg" src="assets/reel-04.mp4"></video><span class="play"></span><span class="hint">Preview</span></div><h3>LED light therapy</h3><p>What the light does, explained by the team.</p></div>
+      <div class="reel rv" style="--d:.2s"><div class="frame"><video playsinline muted preload="none" poster="assets/reel-01-poster.jpg" src="assets/reel-01.mp4"></video><span class="play"></span><span class="hint">Preview</span></div><h3>An ingredient, explained</h3><p>One of the team talks it through.</p></div>
+      <div class="reel rv" style="--d:.3s"><div class="frame"><video playsinline muted preload="none" poster="assets/reel-09-poster.jpg" src="assets/reel-09.mp4"></video><span class="play"></span><span class="hint">Preview</span></div><h3>A morning at Derm Haus</h3><p>Dermal therapist Casey setting up for back-to-back consultations.</p></div>
     </div>
-    <div class="edu">
-      <div class="vid"><div class="ph">Video</div><h3>Why pigmentation comes back</h3><p>The types, what drives each one, and why the cause decides the pathway.</p></div>
-      <div class="vid"><div class="ph">Video</div><h3>Texture and scarring, in stages</h3><p>Why one treatment rarely does it, and what a planned pathway looks like.</p></div>
-      <div class="vid"><div class="ph">Video</div><h3>What a skin consultation involves</h3><p>The hour, the analysis, the plan and the follow-up, start to finish.</p></div>
-      <div class="vid"><div class="ph">Video</div><h3>Skin that looks tired</h3><p>Hydration, tone, lines and sun: separating them and putting them in order.</p></div>
-      <div class="vid"><div class="ph">Video</div><h3>Getting ahead of it in your thirties</h3><p>What a preventative plan is, and what it is not.</p></div>
-      <div class="vid"><div class="ph">Video</div><h3>Skin and medical aesthetics together</h3><p>How the team plans across both, and why that matters for your result.</p></div>
-    </div>
+    <p class="ig rv">More at <a href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener">@dermhausbrisbane</a>.</p>
   </div>
 </section>
 
 <section id="reviews">
   <div class="wrap">
-    <div class="eyebrow">Google reviews</div>
-    <h2>What clients say after their consultation.</h2>
-    <p class="lead">Placeholder strip: pulled live from Google, 4.9 stars across nearly 200 reviews. Verbatim client reviews only, no edited testimonials.</p>
-    <div class="reviews">
-      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Live Google review text appears here.</p><span>Google &middot; Annerley</span></div>
-      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Live Google review text appears here.</p><span>Google &middot; Bald Hills</span></div>
-      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Live Google review text appears here.</p><span>Google &middot; Annerley</span></div>
+    <div class="eyebrow rv">Google reviews</div>
+    <h2 class="rv" style="--d:.1s">In their own words.</h2>
+    <div class="car rv" style="--d:.2s" id="car">
+      <div class="viewport"><div class="track">
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>They provide an excellent consultation service and never pressure to go ahead with any service unless its best suited to you.</blockquote><cite>Jasmine K. &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>The clinic itself is absolutely beautiful, modern, luxurious, impeccably presented, and always welcoming.</blockquote><cite>Karmyn &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>I can&rsquo;t fault Ali &amp; Rachel, they are lovely ladies who make you feel relaxed and calm during your sessions</blockquote><cite>Emily G. &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Derm Haus Aesthetics is always a professional yet personal experience. The staff are lovely, knowledgeable, and make you feel comfortable from the moment you walk in.</blockquote><cite>Lisa B. &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>I love my Derm Haus visits! Meg &amp; Courtney are amazing.</blockquote><cite>Michelle H. &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Casey at Annerley is wonderful and always feeds me a wealth of knowledge during our sessions.</blockquote><cite>Georgia &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>You never feel rushed or pressured just supported, informed, and looked after.</blockquote><cite>Karmyn &middot; Google review</cite></div></div>
+        <div class="slide"><div class="card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>The ladies were awesome to deal with. Such a beautiful space, Elise made me feel comfortable as it was my first time to get my treatment. Will be back</blockquote><cite>Catherine H. &middot; Google review</cite></div></div>
+      </div></div>
+      <div class="ctrl"><div class="dots"></div><div class="arrows"><button type="button" class="prev" aria-label="Previous review">&larr;</button><button type="button" class="next" aria-label="Next review">&rarr;</button></div></div>
     </div>
   </div>
 </section>
 
-<section class="alt consult" id="consult">
+<section class="alt" id="locations">
   <div class="wrap">
-    <div class="eyebrow">Book a consultation</div>
-    <h2 style="margin:0 auto 14px;max-width:none">Start with your skin.</h2>
-    <p class="lead" style="margin:0 auto">Tell us what you are noticing and which clinic is closer. You will get a text with consultation times to choose from, and the plan is built in the room.</p>
-    <form onsubmit="event.preventDefault();this.innerHTML='<p class=lead style=text-align:center>Thank you. The clinic will text you shortly with times.</p>'">
+    <div class="eyebrow rv">Two clinics, one team</div>
+    <h2 class="rv" style="--d:.1s">North side or south side.</h2>
+    <p class="lead rv" style="--d:.2s">Started at Annerley in 2017, grown to Bald Hills. Book at whichever clinic is closer.</p>
+    <div class="locwide rv-img"><img src="assets/clinic-lounge.jpg" alt="Inside Derm Haus"></div>
+    <div class="locs">
+      <div class="loc rv"><div class="k">South side</div><h3>Annerley</h3><p>Level 1, 3/2 Stephens St, Annerley QLD 4103<br>(07) 3132 7999</p><a class="btn ghost" href="#consult">Book Annerley</a></div>
+      <div class="loc rv" style="--d:.1s"><div class="k">North side</div><h3>Bald Hills</h3><p>1/2091 Gympie Road, Bald Hills QLD 4036<br>(07) 3132 7999</p><a class="btn ghost" href="#consult">Book Bald Hills</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="consult" id="consult">
+  <div class="wrap">
+    <div class="eyebrow rv">Book a consultation</div>
+    <h2 class="rv" style="--d:.1s">Start with your skin.</h2>
+    <p class="lead rv" style="--d:.2s">Tell us what you are noticing and which clinic is closer. You will get a text with consultation times to choose from.</p>
+    <form class="rv" style="--d:.3s" onsubmit="event.preventDefault();this.innerHTML='<p class=lead style=text-align:center>Thank you. The clinic will text you shortly with times.</p>'">
       <div><label>First name</label><input type="text" placeholder="Your first name"></div>
       <div><label>Mobile</label><input type="tel" placeholder="04.."></div>
       <div><label>Email</label><input type="email" placeholder="you@email.com"></div>
-      <div><label>What is bothering you most?</label><select><option>Pigmentation</option><option>Texture or scarring</option><option>Skin quality or ageing</option><option>Acne</option><option>Preventative</option><option>Medical aesthetics</option></select></div>
+      <div><label>What is bothering you most?</label><select><option>Pigmentation</option><option>Acne</option><option>Texture or scarring</option><option>Skin that looks tired</option><option>Getting ahead of it</option><option>Medical aesthetics</option></select></div>
       <div><label>Closest clinic</label><select><option>Annerley</option><option>Bald Hills</option><option>Either</option></select></div>
       <div><label>Anything you want us to know</label><textarea placeholder="What you have tried, how long, what bothers you most"></textarea></div>
       <button class="btn" type="submit">Send to Derm Haus</button>
     </form>
-    <p class="fine-p">Consultations are one hour at Annerley or Bald Hills. $100 deposit, credited on the day. Individual results vary. Suitability for any treatment is decided at consultation.</p>
+    <p class="fine-p">Consultations are one hour at Annerley or Bald Hills, with a $100 deposit credited on the day. Individual results vary. Suitability for any treatment is decided at consultation.</p>
   </div>
 </section>
 
@@ -300,9 +488,76 @@ header.hero video.bg{width:100%;height:100%;object-fit:cover;object-position:cen
     <div><img src="assets/logo.png" alt="Derm Haus"><p>Skin health and aesthetic medicine clinics in Brisbane. Family-run, nurse and doctor led, since 2017.</p></div>
     <div><h4>Annerley</h4><p>Level 1, 3/2 Stephens St<br>Annerley QLD 4103</p></div>
     <div><h4>Bald Hills</h4><p>1/2091 Gympie Road<br>Bald Hills QLD 4036</p></div>
-    <div><h4>Contact</h4><p>(07) 3132 7999<br>hello@dermhaus.com.au<br><a href="https://www.instagram.com/dermhausbrisbane/">@dermhausbrisbane</a></p></div>
-    <div class="fine">Website concept prepared by Clinic Catalyst for Derm Haus. Logo and photography from the live site. Individual results vary. Treatment suitability is determined at consultation. &copy; 2026 Derm Haus.</div>
+    <div><h4>Contact</h4><p>(07) 3132 7999<br>hello@dermhaus.com.au<br><a href="https://www.instagram.com/dermhausbrisbane/" target="_blank" rel="noopener">@dermhausbrisbane</a></p></div>
+    <div class="fine">Website concept prepared by Clinic Catalyst for Derm Haus. Photography, videos and reviews from the Derm Haus website, Instagram and Google reviews. Individual results vary. Treatment suitability is determined at consultation. &copy; 2026 Derm Haus.</div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hoverable=window.matchMedia('(hover: hover)').matches;
+
+  /* reveals */
+  var els=document.querySelectorAll('.rv,.rv-img,.line');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});els.forEach(function(e){io.observe(e);});}
+
+  /* count-up */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target=parseInt(el.dataset.count,10); if(el.dataset.plain){return;}
+    var done=false;
+    function go(){ if(done) return; done=true; if(reduce){el.textContent=target;return;} var s=null; function st(ts){ if(!s) s=ts; var p=Math.min(1,(ts-s)/1200); el.textContent=Math.round(target*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(st);} requestAnimationFrame(st); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(en,o){ en.forEach(function(x){ if(x.isIntersecting){ go(); o.disconnect(); } }); },{threshold:.6}).observe(el); } else go();
+  });
+
+  /* nav shrink */
+  window.addEventListener('scroll',function(){document.body.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+
+  /* concern peek */
+  var peek=document.getElementById('peek'),pimg=document.getElementById('peekimg'),pvid=document.getElementById('peekvid'),ptag=document.getElementById('peektag');
+  pvid.muted=true;
+  document.querySelectorAll('.crow').forEach(function(r){
+    r.addEventListener('mouseenter',function(){
+      pimg.src=r.dataset.img; ptag.textContent=r.dataset.tag||''; peek.classList.add('on');
+      if(r.dataset.video&&!reduce){ pvid.src=r.dataset.video; var p=pvid.play(); if(p&&p.catch) p.catch(function(){}); pvid.style.opacity=1; } else { pvid.pause(); pvid.style.opacity=0; }
+    });
+    r.addEventListener('mouseleave',function(){ peek.classList.remove('on'); pvid.pause(); pvid.style.opacity=0; });
+    r.addEventListener('mousemove',function(e){ peek.style.left=e.clientX+'px'; peek.style.top=e.clientY+'px'; });
+  });
+
+  /* reels: hover preview muted, click to play with sound */
+  document.querySelectorAll('.reel').forEach(function(card){
+    var v=card.querySelector('video'), frame=card.querySelector('.frame');
+    function preview(){ if(reduce||card.classList.contains('playing')) return; v.muted=true; v.preload='auto'; var p=v.play(); if(p&&p.catch) p.catch(function(){}); card.classList.add('previewing'); }
+    function stop(){ if(card.classList.contains('playing')) return; v.pause(); card.classList.remove('previewing'); }
+    if(hoverable){ card.addEventListener('mouseenter',preview); card.addEventListener('mouseleave',stop); }
+    frame.addEventListener('click',function(){
+      document.querySelectorAll('.reel.playing').forEach(function(o){ if(o!==card){ var ov=o.querySelector('video'); ov.pause(); ov.controls=false; ov.muted=true; o.classList.remove('playing'); } });
+      card.classList.remove('previewing'); card.classList.add('playing');
+      v.currentTime=0; v.muted=false; v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    });
+  });
+
+  /* reviews carousel */
+  var car=document.getElementById('car');
+  if(car){
+    var track=car.querySelector('.track'), slides=[].slice.call(car.querySelectorAll('.slide')), dotsWrap=car.querySelector('.dots'), idx=0, timer=null;
+    function perView(){ return window.innerWidth<=860?1:2; }
+    function pages(){ return Math.max(1,slides.length-perView()+1); }
+    function build(){ dotsWrap.innerHTML=''; for(var i=0;i<pages();i++){ var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Go to review '+(i+1)); (function(n){ b.addEventListener('click',function(){ go(n); restart(); }); })(i); dotsWrap.appendChild(b);} }
+    function go(n){ var max=pages(); idx=(n+max)%max; track.style.transform='translateX(-'+(idx*100/perView())+'%)'; [].forEach.call(dotsWrap.children,function(d,i){ d.classList.toggle('on',i===idx); }); }
+    function restart(){ if(reduce) return; clearInterval(timer); timer=setInterval(function(){ go(idx+1); },6500); }
+    car.querySelector('.next').addEventListener('click',function(){ go(idx+1); restart(); });
+    car.querySelector('.prev').addEventListener('click',function(){ go(idx-1); restart(); });
+    car.addEventListener('mouseenter',function(){ clearInterval(timer); });
+    car.addEventListener('mouseleave',restart);
+    var sx=null; car.addEventListener('pointerdown',function(e){ sx=e.clientX; });
+    car.addEventListener('pointerup',function(e){ if(sx===null) return; var dx=e.clientX-sx; if(Math.abs(dx)>40){ go(idx+(dx<0?1:-1)); restart(); } sx=null; });
+    window.addEventListener('resize',function(){ build(); go(Math.min(idx,pages()-1)); });
+    build(); go(0); restart();
+  }
+})();
+</script>
 </body>
 </html>
